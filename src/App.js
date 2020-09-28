@@ -1,4 +1,4 @@
-import React, {Conponent, useState} from 'react'
+import React, {Conponent, useState, useEffect} from 'react'
 import List from"./List";
 
 
@@ -16,6 +16,12 @@ const App = ()=>{
     setTodos([...todos, newTodo])
 //원래 있던 배열(todos)에 새로 받은 값(newTodo)을 넣음
   }
+
+  useEffect(()=>{
+    console.log("새로운 렌더링",todos);
+  }, [todos])
+//[]인자에 변화가 생길때마다 렌더링됨
+
   return(
     <>
     <h1>todo application</h1>
