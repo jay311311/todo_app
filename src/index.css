@@ -16,3 +16,7 @@ code {
 #root{
   padding: 1.5rem;
 }
+
+.done{
+  text-decoration: line-through;
+}

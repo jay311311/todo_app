@@ -1,4 +1,4 @@
-import  {useState,useEffect} from "react"
+import  {useState, useEffect} from "react"
 
 const useFetch =(callback,url) =>{
     const [loading,setLoading] = useState(false)
@@ -13,8 +13,7 @@ const useFetch =(callback,url) =>{
       setLoading(false)
     }
   
-    useEffect( ()=>{
-      
+    useEffect( () => {
       fetchInitialData();
     },[])
     //비동기에대한적절한 처리를위해 콜백함수안에 직접넣지x
