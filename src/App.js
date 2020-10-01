@@ -9,24 +9,18 @@ export const TodoContext = React.createContext();
 
 const App = ()=>{
   const [todos, setTodos] = useState([])
-  const [newTodo, setNewTodo] = useState([])
+
   //useState는 state를 compoenet안에서 관리
 
 /* const loading = useFetch(setTodos, "http://yts-proxy.now.sh/list_movies.json?sort_by=rating")
  */
-  const changeInputData=(event)=>{
-    setNewTodo(event.target.value)
-    //newTodo에 event.target.value 값을 넣음
-  }
- 
-  const addTodo =(event)=>{
-    event.preventDefault()
+
+  const addTodo =(newTodo)=>{
     setTodos([...todos, { "title" : newTodo, "id" : todos.length+1, "status" : "todo"}])
 //원래 있던 배열(todos)에 새로 받은 값(newTodo)을 넣음
   }
 
   const changeTodoStatus = (id) =>{
-   
     const updateTodos = todos.map(todo => {
       if(todo.id === +id) {
         if(todo.status === "todo") {todo.status = "done"}
@@ -48,12 +42,12 @@ const App = ()=>{
 
 
   return(
-    <TodoContext.Provider value={{todos}}>
+    <TodoContext.Provider value={{todos,addTodo,changeTodoStatus}}>
   
-    <Header  todos={todos}/>
-    <Form addTodo={addTodo} changeInputData={changeInputData}/>
+    <Header />
+    <Form />
+    <List /* loading={loading}  */ />
 
-    <List todos={todos} /* loading={loading}  */changeTodoStatus={changeTodoStatus} />
     </TodoContext.Provider>
   )
 }

@@ -1,7 +1,11 @@
-import React from 'react'
+import React,{useContext} from 'react'
 import Item from "./Item"
+import {TodoContext} from "./App"
 
-const List = ({todos/* ,loading */,changeTodoStatus}) => {
+const List = () => {
+
+    const {todos,changeTodoStatus} = useContext(TodoContext)
+
 
    /*  let todoList = <div>loading</div> */
     /* if(!loading) { */
